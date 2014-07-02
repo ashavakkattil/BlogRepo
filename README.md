@@ -1,6 +1,5 @@
 BlogRepo
 ========
 
-This is my first repository in Github
-test to check if new branch works
+Test file for branch-  development
 
