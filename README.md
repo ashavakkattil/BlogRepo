@@ -3,6 +3,5 @@ BlogRepo
 
 This is my first repository in Github
 
-Test2 - from rails project
-=======
+trial test to check the push and pull in git
 
