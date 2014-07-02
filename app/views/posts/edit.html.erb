@@ -1,0 +1,30 @@
+<h2>Editing post</h2>
+ 
+<%= form_for :post, url: post_path, method: :patch do |f| %>
+  <% if @post.errors.any? %>
+  <div id="error_exp">
+    <h3><%= pluralize(@post.errors.count, "error") %> prohibited
+      this post from being saved:</h3>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= f.submit "update" %>
+  </p>
+  <%= link_to 'Back', user_posts_path(@post.user_id) %>
+<% end %>
+ 

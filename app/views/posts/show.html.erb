@@ -1,0 +1,41 @@
+
+<p>
+<strong>Title : </strong>
+<%= @post.title %>
+</p>
+<p>
+<strong>Text : </strong>
+<%= @post.text %>
+</p>
+<h4>Add a comment:</h4>
+<%= form_for([@post, @post.usercomments.build]) do |f| %>
+  <p>
+    <%= f.label :commenter %><br />
+    <%= f.text_field :commenter %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <h4>Comments</h4>
+<% @post.usercomments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', user_posts_path(@post.user_id) %>
+<% end %>
+
+
+

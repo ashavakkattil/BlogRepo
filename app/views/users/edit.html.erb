@@ -1,0 +1,26 @@
+<h3>Edit user details</h3>
+
+<%= form_for :user, url: user_path(@user), :html => { :multipart => true }, method: :patch do |f| %>
+<%= f.file_field :avatar %>
+  <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :Name %>
+  </p>
+ 
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<%- unless @user.new_record? || !@user.avatar? -%>
+    <div>
+      <%= f.label(:delete_avatar, 'Delete photo') %>
+      <%= image_tag(@user.avatar.url, :alt => 'Photo', :title => 'Current photo') %>
+      <%= f.check_box(:delete_avatar) %>
+    </div>
+  <%- end -%>
+  <%= link_to 'Back' , users_path %>
+<% end %>

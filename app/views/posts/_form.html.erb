@@ -1,0 +1,27 @@
+<%= form_for :post  do |f| %>
+<% if @post.errors.any? %>
+
+<div id = "error_exp">
+<h3><%= pluralize(@post.errors.count,"error") %> prevented this post from getting saved</h3>
+<ul><% @post.errors.full_messages.each do |m|%>
+<li><%= m %></li>
+<% end %>
+</ul>
+ </div>
+ <%= link_to 'Go to New posts Page' ,new_post_path %>
+<% else %>
+<p>
+<%= f.label :title %>
+<%= f.text_field :title%>
+</p>
+<p>
+<%= f.label :text %>
+<%= f.text_area :text %>
+</p>
+<p>
+<%= f.submit  %>
+</p>
+<%= link_to 'Back' ,posts_path %>
+<% end %>
+
+<% end %>

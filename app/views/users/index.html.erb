@@ -1,0 +1,28 @@
+
+<h2>Click <%= link_to 'here ', new_user_path %>to create new user</h2>
+<h3>Listing Users</h3>
+<body> 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.Name %></td>
+      <td><%= user.email %></td>
+      
+      <td><%= link_to 'View Posts',user_posts_path(user) %></td>
+      <td><%= link_to 'Edit  User Details ', edit_user_path(user) %></td>
+      <td><%= link_to 'Delete User', user_path(user),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= image_tag user.avatar.url(:medium) %></td>
+    </tr>
+
+  <% end %>
+
+</table>
+
+ <%= link_to 'Back' , welcome_index_path %>
+</body>
